@@ -5,7 +5,7 @@ Trees stand as majestic hierarchical structures, branching out into a myriad of 
 Definition of a Tree (Hierarchical structure with nodes):
 A tree is a hierarchical data structure composed of nodes connected by edges. At the pinnacle of this hierarchy lies the root node, branching out into various child nodes, forming a branching structure reminiscent of natural trees.
 
-
+![alt text](<Picture Files/Stack.jpg>)
 
 Terminology (Root, Parent, Child, Sibling):
 To navigate the intricacies of trees, it's essential to grasp key terminology:

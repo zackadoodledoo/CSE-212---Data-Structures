@@ -5,6 +5,8 @@ A stack is a fundamental data structure that operates on the principle of Last I
 Definition of a Stack (LIFO - Last In, First Out):
 A stack is a linear data structure that follows the Last In, First Out (LIFO) principle. This means that the last element added to the stack will be the first one to be removed. 
 
+![alt text](<Picture Files/Stack.jpg>)
+
 Real-world examples of stacks:
 Stacks are ubiquitous in both the digital and physical worlds. Consider the Undo/Redo functionality in text editors or graphic design software. Each action performed is added to a stack, allowing users to backtrack through their history. Similarly, in programming, the call stack manages function calls during program execution, ensuring that each function call is processed in the reverse order of its invocation.
 
