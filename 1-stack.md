@@ -78,11 +78,15 @@ Stack(Int32): This constructor is utilized to make an example of the Stack class
 We should perceive how to make a stack utilizing Stack() constructor:
 Stage 1: Include System.Collections namespace in your program with the assistance of utilizing catchphrases.
 
+```
 utilizing System. Collections;
+```
 
 Stage 2: Create a stack utilizing Stack class as displayed beneath:
 
+```
 Stack stack_name = new Stack();
+```
 
 Stage 3: If you need to add components to your stack, then, at that point, use Push() technique to add components in your stack. As displayed in the beneath model.
 
