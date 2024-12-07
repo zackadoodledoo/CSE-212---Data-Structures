@@ -1,13 +1,13 @@
-3. Tree
-Introduction:
+## Tree
+## Introduction:
 Trees stand as majestic hierarchical structures, branching out into a myriad of possibilities. As we embark on this journey, we'll uncover the essence of trees, exploring their fundamental concepts and diverse applications.
 
-Definition of a Tree (Hierarchical structure with nodes):
+## Definition of a Tree (Hierarchical structure with nodes):
 A tree is a hierarchical data structure composed of nodes connected by edges. At the pinnacle of this hierarchy lies the root node, branching out into various child nodes, forming a branching structure reminiscent of natural trees.
 
 ![alt text](<Picture Files/BSTTree.jpg>)
  
-Terminology (Root, Parent, Child, Sibling):
+## Terminology (Root, Parent, Child, Sibling):
 To navigate the intricacies of trees, it's essential to grasp key terminology:
 
 Root: The topmost node of the tree, serving as the entry point for traversal.
@@ -21,12 +21,12 @@ Binary Tree: A tree in which each node has at most two child nodes, commonly ref
 
 ![alt text](<Picture Files/TreesGeneral.jpg>)
 
-Binary Search Tree (BST):
+## Binary Search Tree (BST):
 A shining beacon of order amidst the chaos of data, the Binary Search Tree (BST) embodies precision and efficiency. Defined by its strict ordering property, the BST facilitates rapid search, insertion, and deletion operations.
 
 Definition and properties: A Binary Search Tree (BST) is a binary tree in which the value of each node follows a specific ordering property: the value of nodes in the left subtree is less than the node's value, and the value of nodes in the right subtree is greater than the node's value.
 
-Operations (Insertion, Deletion, Search):
+## Operations (Insertion, Deletion, Search):
 Insertion: Adding a new node to the BST while maintaining the ordering property.
 Time Complexity: O(log n) on average for a balanced BST, O(n) in the worst case.
 Explanation: When inserting a new node into a BST, we need to find the correct position in the tree based on the value of the node. In a balanced BST, each comparison reduces the search space by approximately half, leading to a time complexity of O(log n). However, in the worst case scenario, if the BST becomes unbalanced, insertion can take O(n) time when the tree degenerates into a linked list.
@@ -36,166 +36,187 @@ Explanation: Deletion in a BST involves finding the node to be deleted and then 
 Search: Locating a specific value within the BST with optimal efficiency, leveraging its ordered structure.
 Time Complexity: O(log n) on average for a balanced BST, O(n) in the worst case.
 Explanation: Searching in a BST exploits its ordered structure. At each step of the search, we compare the target value with the value of the current node and choose the appropriate subtree to continue the search. In a balanced BST, this reduces the search space by approximately half at each step, leading to a time complexity of O(log n). However, in the worst case, if the tree is unbalanced, searching may take O(n) time, as it requires traversing all nodes in one branch of the tree.
-Real-world examples of BST:
+
+## Real-world examples of BST:
 Below is an example of Python code demonstrating the implementation of insertion, deletion, and search operations in a binary search tree (BST):
 
-class TreeNode:
-    def __init__(self, key):
-        self.key = key
-        self.left = None
-        self.right = None
+## Step-by-Step Implementation
+Define the Tree Node Class
+The tree node class will have a value and references to its left and right children.
 
-class BST:
-    def __init__(self):
-        self.root = None
+```
+public class TreeNode
+{
+    public int Value { get; set; }
+    public TreeNode Left { get; set; }
+    public TreeNode Right { get; set; }
 
-    def insert(self, key):
-        self.root = self._insert_helper(self.root, key)
+    public TreeNode(int value)
+    {
+        Value = value;
+        Left = null;
+        Right = null;
+    }
+}
+```
+Define the Binary Tree Class
+The binary tree class will contain the root node and methods to perform various operations like insertion, traversal, etc.
 
-    def _insert_helper(self, root, key):
-        if root is None:
-            return TreeNode(key)
-        if key < root.key:
-            root.left = self._insert_helper(root.left, key)
-        else:
-            root.right = self._insert_helper(root.right, key)
-        return root
+```
+public class BinaryTree
+{
+    public TreeNode Root { get; private set; }
 
-    def search(self, key):
-        return self._search_helper(self.root, key)
+    public BinaryTree()
+    {
+        Root = null;
+    }
 
-    def _search_helper(self, root, key):
-        if root is None or root.key == key:
-            return root
-        if key < root.key:
-            return self._search_helper(root.left, key)
-        else:
-            return self._search_helper(root.right, key)
+    public void Insert(int value)
+    {
+        Root = InsertRec(Root, value);
+    }
 
-    def delete(self, key):
-        self.root = self._delete_helper(self.root, key)
+    private TreeNode InsertRec(TreeNode root, int value)
+    {
+        if (root == null)
+        {
+            root = new TreeNode(value);
+            return root;
+        }
 
-    def _delete_helper(self, root, key):
-        if root is None:
-            return root
-        if key < root.key:
-            root.left = self._delete_helper(root.left, key)
-        elif key > root.key:
-            root.right = self._delete_helper(root.right, key)
-        else:
-            if root.left is None:
-                return root.right
-            elif root.right is None:
-                return root.left
-            root.key = self._min_value_node(root.right).key
-            root.right = self._delete_helper(root.right, root.key)
-        return root
+        if (value < root.Value)
+        {
+            root.Left = InsertRec(root.Left, value);
+        }
+        else if (value > root.Value)
+        {
+            root.Right = InsertRec(root.Right, value);
+        }
 
-    def _min_value_node(self, node):
-        current = node
-        while current.left is not None:
-            current = current.left
-        return current
+        return root;
+    }
 
-    def inorder_traversal(self, root):
-        if root:
-            self.inorder_traversal(root.left)
-            print(root.key, end=" ")
-            self.inorder_traversal(root.right)
+    public void InOrderTraversal()
+    {
+        InOrderRec(Root);
+    }
 
-# Example usage:
-bst = BST()
-bst.insert(50)
-bst.insert(30)
-bst.insert(20)
-bst.insert(40)
-bst.insert(70)
-bst.insert(60)
-bst.insert(80)
+    private void InOrderRec(TreeNode root)
+    {
+        if (root != null)
+        {
+            InOrderRec(root.Left);
+            Console.Write(root.Value + " ");
+            InOrderRec(root.Right);
+        }
+    }
 
-print("Inorder traversal of the constructed BST:")
-bst.inorder_traversal(bst.root)
+    public void PreOrderTraversal()
+    {
+        PreOrderRec(Root);
+    }
 
-print("Search for key 40:", bst.search(40).key if bst.search(40) else "Not found")
-print("Search for key 100:", bst.search(100).key if bst.search(100) else "Not found")
+    private void PreOrderRec(TreeNode root)
+    {
+        if (root != null)
+        {
+            Console.Write(root.Value + " ");
+            PreOrderRec(root.Left);
+            PreOrderRec(root.Right);
+        }
+    }
 
-bst.delete(30)
-print("Inorder traversal after deletion of key 30:")
-bst.inorder_traversal(bst.root)
-This code defines a TreeNode class to represent nodes in the binary search tree and a BST class that implements insertion, search, and deletion operations. The inorder_traversal method is used to perform an inorder traversal of the tree. Finally, an example usage demonstrates how to create a BST, insert elements, search for elements, and delete elements.
+    public void PostOrderTraversal()
+    {
+        PostOrderRec(Root);
+    }
 
-Here is the out-put of the code:
+    private void PostOrderRec(TreeNode root)
+    {
+        if (root != null)
+        {
+            PostOrderRec(root.Left);
+            PostOrderRec(root.Right);
+            Console.Write(root.Value + " ");
+        }
+    }
 
-Inorder traversal of the constructed BST:
-20 30 40 50 60 70 80 #What's on the tree
-Search for key 40: 40
-Search for key 100: Not found
-Inorder traversal after deletion of key 30:
-20 40 50 60 70 80
-Problem to Solve:
-Given an unsorted array of integers, write a Python function to create a Binary Search Tree (BST) from the array. Then, implement the following operations on the BST:
+    public bool Search(int value)
+    {
+        return SearchRec(Root, value);
+    }
 
-Insert an element into the BST.
-Delete an element from the BST.
-Search for an element in the BST.
-Perform an inorder traversal of the BST.
-Starter code:
+    private bool SearchRec(TreeNode root, int value)
+    {
+        if (root == null)
+        {
+            return false;
+        }
 
-class TreeNode:
-    def __init__(self, key):
-        self.val = key
-        self.left = None
-        self.right = None
+        if (root.Value == value)
+        {
+            return true;
+        }
 
-class BST:
-    def __init__(self):
-        self.root = None
+        return value < root.Value ? SearchRec(root.Left, value) : SearchRec(root.Right, value);
+    }
+}
+```
+Example Usage
+Here is how you can use the BinaryTree class to create a tree, insert values, and perform traversals:
 
-    def insert(self, root, key):
-        # Implement insertion operation here
-        pass
+```
+using System;
 
-    def delete(self, root, key):
-        # Implement deletion operation here
-        pass
+public class Program
+{
+    public static void Main()
+    {
+        BinaryTree tree = new BinaryTree();
 
-    def search(self, root, key):
-        # Implement search operation here
-        pass
+        // Insert values
+        tree.Insert(50);
+        tree.Insert(30);
+        tree.Insert(70);
+        tree.Insert(20);
+        tree.Insert(40);
+        tree.Insert(60);
+        tree.Insert(80);
 
-    def inorder_traversal(self, root):
-        # Implement inorder traversal operation here
-        pass
+        // Perform traversals
+        Console.Write("In-order traversal: ");
+        tree.InOrderTraversal(); // Output: 20 30 40 50 60 70 80
+        Console.WriteLine();
 
-# Function to create a BST from an unsorted array
-def create_bst(arr):
-    bst = BST()
-    for key in arr:
-        bst.root = bst.insert(bst.root, key)
-    return bst
+        Console.Write("Pre-order traversal: ");
+        tree.PreOrderTraversal(); // Output: 50 30 20 40 70 60 80
+        Console.WriteLine();
 
-# Test the BST operations
-def test_bst_operations():
-    arr = [50, 30, 20, 40, 70, 60, 80]
-    bst = create_bst(arr)
+        Console.Write("Post-order traversal: ");
+        tree.PostOrderTraversal(); // Output: 20 40 30 60 80 70 50
+        Console.WriteLine();
 
-    print("Inorder traversal of the BST:")
-    bst.inorder_traversal(bst.root)
-    print()
+        // Search for a value
+        Console.WriteLine("Search 40: " + tree.Search(40)); // Output: True
+        Console.WriteLine("Search 90: " + tree.Search(90)); // Output: False
+    }
+}
+```
+Explanation
+TreeNode Class:
 
-    print("\nSearching for key 60:")
-    result = bst.search(bst.root, 60)
-    if result:
-        print("Key 60 found in the BST.")
-    else:
-        print("Key 60 not found in the BST.")
+Represents a node in the binary tree.
+Contains a value and references to left and right child nodes.
+BinaryTree Class:
 
-    print("\nDeleting key 30:")
-    bst.delete(bst.root, 30)
-    print("Inorder traversal after deletion:")
-    bst.inorder_traversal(bst.root)
+Contains the root of the tree.
+Provides methods for inserting values, performing in-order, pre-order, and post-order traversals, and searching for a value.
+Program Class:
 
-test_bst_operations()
-Answer
+Demonstrates how to use the BinaryTree class to create a tree, insert values, perform traversals, and search for values.
+This basic implementation provides a foundation for working with binary trees in C#. You can expand upon this by adding more methods such as deletion, balancing the tree, or implementing other types of trees like AVL trees or Red-Black trees.
 
-Back
+[Answer]
+
+[Back]
