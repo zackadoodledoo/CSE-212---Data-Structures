@@ -395,3 +395,13 @@ public class StackBalancedParentheses
     }
 }
 ```
+
+## Explanation:
+StackBalancedParentheses Class: Contains the method to validate balanced parentheses using a stack.
+
+IsBalanced(string expression): Checks if the parentheses in the expression are balanced by pushing opening brackets onto the stack and popping them when a matching closing bracket is found.
+
+Main Method: Tests the IsBalanced method with an example expression.
+
+## Solution:
+The provided code checks if an expression has balanced parentheses using a stack and prints the result.
