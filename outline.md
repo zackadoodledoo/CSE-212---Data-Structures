@@ -5,7 +5,7 @@
 * 
 * Contact Information: Zackary Sinclair
 * email: sin12014@byui.edu
-## II. Stack _(pick one)_
+## II. Stack 
 * 
 * Introduction: 
 * A stack is a linear data structure that follows 
@@ -29,7 +29,7 @@
 * 
 * Problem to Solve: Use a stack to validate balanced parentheses in an expression.
 * 
-## III. Linked List _(pick one)_
+## III. Linked List 
 * Introduction: 
 * A linked list is a linear data structure where elements are stored in nodes, each pointing to the next node 
 * in the sequence. It's useful for dynamic memory allocation.
@@ -48,7 +48,7 @@
 * Implement a function to reverse a linked list.
 * 
 * Problem to Solve: 
-* Create a linked list to store and display a sequence of Fibonacci numbers.
+* Create a linked list to store and display in reverse order.
 * 
 ## IV. Tree
 * Introduction: Trees are hierarchical data structures with a root element and sub-elements, branching out to represent data

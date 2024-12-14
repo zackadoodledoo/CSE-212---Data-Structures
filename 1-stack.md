@@ -78,13 +78,13 @@ Stack(Int32): This constructor is utilized to make an example of the Stack class
 We should perceive how to make a stack utilizing Stack() constructor:
 Stage 1: Include System.Collections namespace in your program with the assistance of utilizing catchphrases.
 
-```
+```c#
 utilizing System. Collections;
 ```
 
 Stage 2: Create a stack utilizing Stack class as displayed beneath:
 
-```
+```c#
 Stack stack_name = new Stack();
 ```
 
@@ -187,3 +187,211 @@ Note: The model gets the Stack utilized in the above models, then, at that point
 - In light of dynamic memory allotment on the off chance that we did not utilize all memory space then there will be wastage of memory space.
 
 ![alt text](<Picture Files/Stack example.jpg>)
+
+## Example Problem: 
+Implement a stack to reverse a string.
+
+```c#
+using System;
+using System.Collections.Generic;
+
+public class StackReverseString
+{
+    public static string ReverseString(string input)
+    {
+        Stack<char> stack = new Stack<char>();
+
+        foreach (char c in input)
+        {
+            stack.Push(c);
+        }
+
+        char[] reversedArray = new char[input.Length];
+        int index = 0;
+
+        while (stack.Count > 0)
+        {
+            reversedArray[index++] = stack.Pop();
+        }
+
+        return new string(reversedArray);
+    }
+
+    public static void Main()
+    {
+        string original = "Hello, World!";
+        string reversed = ReverseString(original);
+
+        Console.WriteLine("Original String: " + original);
+        Console.WriteLine("Reversed String: " + reversed);
+    }
+}
+
+```
+
+## Explanation:
+StackReverseString Class: Contains the method to reverse a string using a stack.
+
+ReverseString(string input): Pushes each character of the input string onto a stack, then pops them off to create the reversed string.
+
+Main Method: Tests the ReverseString method with an example string.
+Solution:
+
+The provided code takes an input string, reverses it using a stack, and prints both the original and reversed strings.
+
+
+
+
+## Problem to Solve: 
+Use a stack to validate balanced parentheses in an expression.
+
+```c#
+using System;
+using System.Collections.Generic;
+
+public class StackBalancedParentheses
+{
+    public static bool IsBalanced(string expression)
+    {
+        // Enter code here
+    }
+
+    public static void Main()
+    {
+       // Enter code here
+    }
+}
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Answer to the problem:
+
+```c#
+using System;
+using System.Collections.Generic;
+
+public class StackBalancedParentheses
+{
+    public static bool IsBalanced(string expression)
+    {
+        Stack<char> stack = new Stack<char>();
+
+        foreach (char c in expression)
+        {
+            if (c == '(' || c == '{' || c == '[')
+            {
+                stack.Push(c);
+            }
+            else if (c == ')' || c == '}' || c == ']')
+            {
+                if (stack.Count == 0)
+                {
+                    return false;
+                }
+
+                char top = stack.Pop();
+                if ((c == ')' && top != '(') ||
+                    (c == '}' && top != '{') ||
+                    (c == ']' && top != '['))
+                {
+                    return false;
+                }
+            }
+        }
+
+        return stack.Count == 0;
+    }
+
+    public static void Main()
+    {
+        string expression = "{[()]}";
+        bool isBalanced = IsBalanced(expression);
+
+        Console.WriteLine("Expression: " + expression);
+        Console.WriteLine("Is Balanced: " + isBalanced);
+    }
+}
+```
